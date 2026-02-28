@@ -32,6 +32,8 @@ class ApiService {
       final uri = Uri.parse("$baseUrl$endpoint");
       final headers = await _getHeaders(auth: auth);
       
+      debugPrint("API Request: POST $uri (Body: ${data.length} keys)");
+      
       final res = await http.post(
         uri, 
         headers: headers,
@@ -40,6 +42,7 @@ class ApiService {
       
       return _processResponse(res);
     } catch (e) {
+      debugPrint("API Error on $endpoint: $e");
       _handleError(e);
     }
   }
@@ -121,15 +124,21 @@ class ApiService {
 
   static Future<bool> checkHydrationBackend() async {
     try {
+      debugPrint("API: Checking Hydration Health at $baseUrl...");
       final res = await http
           .get(Uri.parse("$baseUrl/hydration/health"))
-          .timeout(const Duration(seconds: 30)); // Increased for Cold Start
+          .timeout(const Duration(seconds: 60)); // Increased for Render Cold Start
+      
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body);
-        return data['status'] == 'ok' && (data['lip_model_available'] == true);
+        final ok = data['status'] == 'ok' && (data['lip_model_available'] == true);
+        debugPrint("API: Health check ${ok ? 'PASSED' : 'FAILED (Model not available)'}");
+        return ok;
       }
+      debugPrint("API: Health check FAILED with status ${res.statusCode}");
       return false;
-    } catch (_) {
+    } catch (e) {
+      debugPrint("API: Health check ERROR: $e");
       return false;
     }
   }
@@ -168,8 +177,8 @@ class ApiService {
       base64Image = base64Encode(bytes);
     }
     
-    // Longer timeout for ML
-    return await _post("/predict/lip", {"image_base64": base64Image}, timeoutSec: 90);
+    // Extra long timeout for ML (3 minutes) as free-tier servers can be slow with image processing
+    return await _post("/predict/lip", {"image_base64": base64Image}, timeoutSec: 180);
   }
 
   static Future<Map<String, dynamic>> getLipTrends() async {

@@ -59,7 +59,7 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
           _isLoading = false; 
         });
       }
-      print("Dashboard Error: $e");
+      debugPrint("Dashboard Error: $e");
     }
   }
 
@@ -261,14 +261,14 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.deepPurple.withOpacity(0.15),
-            Colors.blueAccent.withOpacity(0.1)
+            Colors.deepPurple.withValues(alpha: 0.15),
+            Colors.blueAccent.withValues(alpha: 0.1)
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.purpleAccent.withOpacity(0.3)),
+        border: Border.all(color: Colors.purpleAccent.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -314,9 +314,9 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.15),
+                    color: Colors.green.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.greenAccent.withOpacity(0.4)),
+                    border: Border.all(color: Colors.greenAccent.withValues(alpha: 0.4)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -333,7 +333,7 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
-                          color: Colors.greenAccent.withOpacity(0.2),
+                          color: Colors.greenAccent.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
@@ -380,9 +380,9 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   decoration: BoxDecoration(
-                    color: Colors.red.withOpacity(0.15),
+                    color: Colors.red.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.redAccent.withOpacity(0.4)),
+                    border: Border.all(color: Colors.redAccent.withValues(alpha: 0.4)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -399,7 +399,7 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
-                          color: Colors.redAccent.withOpacity(0.2),
+                          color: Colors.redAccent.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
@@ -445,11 +445,11 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         gradient: LinearGradient(
-          colors: [Colors.blueAccent.withOpacity(0.2), Colors.cyanAccent.withOpacity(0.1)],
+          colors: [Colors.blueAccent.withValues(alpha: 0.2), Colors.cyanAccent.withValues(alpha: 0.1)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight
         ),
-        border: Border.all(color: Colors.cyanAccent.withOpacity(0.3)),
+        border: Border.all(color: Colors.cyanAccent.withValues(alpha: 0.3)),
       ),
       child: Column(
         children: [
@@ -508,11 +508,11 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
             child: Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.05),
+                color: Colors.white.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: color.withOpacity(0.3)),
+                border: Border.all(color: color.withValues(alpha: 0.3)),
                 boxShadow: [
-                  BoxShadow(color: color.withOpacity(0.05), blurRadius: 20, offset: const Offset(0, 10))
+                  BoxShadow(color: color.withValues(alpha: 0.05), blurRadius: 20, offset: const Offset(0, 10))
                 ]
               ),
               child: Row(
@@ -520,9 +520,9 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.1),
+                      color: color.withValues(alpha: 0.1),
                       shape: BoxShape.circle,
-                      boxShadow: [BoxShadow(color: color.withOpacity(0.2), blurRadius: 10)]
+                      boxShadow: [BoxShadow(color: color.withValues(alpha: 0.2), blurRadius: 10)]
                     ),
                     child: Icon(icon, color: color, size: 32),
                   ),
@@ -551,7 +551,7 @@ class _HydrationHomeScreenState extends State<HydrationHomeScreen> {
                       ],
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios_rounded, color: color.withOpacity(0.5), size: 16),
+                  Icon(Icons.arrow_forward_ios_rounded, color: color.withValues(alpha: 0.5), size: 16),
                 ],
               ),
             ),

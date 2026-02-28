@@ -55,11 +55,17 @@ class _FormScreenState extends State<FormScreen> {
     final hour = DateTime.now().hour;
     if (hour >= 0 && hour < 4) {
       timeSlot = "Midnight-4 AM";
-    } else if (hour >= 4 && hour < 8) timeSlot = "4 AM-8 AM";
-    else if (hour >= 8 && hour < 12) timeSlot = "8 AM-12 PM";
-    else if (hour >= 12 && hour < 16) timeSlot = "12 PM-4 PM";
-    else if (hour >= 16 && hour < 20) timeSlot = "4 PM-8 PM";
-    else timeSlot = "8 PM-Midnight";
+    } else if (hour >= 4 && hour < 8) {
+      timeSlot = "4 AM-8 AM";
+    } else if (hour >= 8 && hour < 12) {
+      timeSlot = "8 AM-12 PM";
+    } else if (hour >= 12 && hour < 16) {
+      timeSlot = "12 PM-4 PM";
+    } else if (hour >= 16 && hour < 20) {
+      timeSlot = "4 PM-8 PM";
+    } else {
+      timeSlot = "8 PM-Midnight";
+    }
     timeSlotController.text = timeSlot;
   }
 
@@ -183,7 +189,9 @@ class _FormScreenState extends State<FormScreen> {
       String riskLevel = "Normal";
       if (recommended > 2.0) {
         riskLevel = "High Dehydration";
-      } else if (recommended > 1.0) riskLevel = "Mild Dehydration";
+      } else if (recommended > 1.0) {
+        riskLevel = "Mild Dehydration";
+      }
       
       final uiResult = {
         "recommended_total_water_liters": recommended,
@@ -202,6 +210,7 @@ class _FormScreenState extends State<FormScreen> {
       service.saveFormResult(uiResult);
       if (service.userName == "User") await service.fetchUserName();
 
+      if (!mounted) return;
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -218,7 +227,7 @@ class _FormScreenState extends State<FormScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
            content: Text("Error: $e", style: GoogleFonts.exo2()), 
-           backgroundColor: Colors.redAccent.withOpacity(0.3),
+           backgroundColor: Colors.redAccent.withValues(alpha: 0.3),
            behavior: SnackBarBehavior.floating,
         ),
       );
@@ -519,9 +528,9 @@ class _FormScreenState extends State<FormScreen> {
         child: Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.05),
+            color: Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: Colors.white.withOpacity(0.1)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -572,18 +581,18 @@ class _FormScreenState extends State<FormScreen> {
       cursorColor: Colors.cyanAccent,
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
-        prefixIcon: Icon(icon, color: Colors.cyanAccent.withOpacity(0.7)),
+        labelStyle: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
+        prefixIcon: Icon(icon, color: Colors.cyanAccent.withValues(alpha: 0.7)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
+          borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.1)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(color: Colors.cyanAccent),
         ),
         filled: true,
-        fillColor: Colors.white.withOpacity(0.05),
+        fillColor: Colors.white.withValues(alpha: 0.05),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         floatingLabelBehavior: FloatingLabelBehavior.auto,
       ),
@@ -621,18 +630,18 @@ class _FormScreenState extends State<FormScreen> {
       style: GoogleFonts.exo2(color: Colors.white),
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
-        prefixIcon: Icon(icon, color: Colors.purpleAccent.withOpacity(0.7)),
+        labelStyle: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
+        prefixIcon: Icon(icon, color: Colors.purpleAccent.withValues(alpha: 0.7)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
+          borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.1)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(color: Colors.purpleAccent),
         ),
         filled: true,
-        fillColor: Colors.white.withOpacity(0.05),
+        fillColor: Colors.white.withValues(alpha: 0.05),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       ),
       icon: const Icon(Icons.keyboard_arrow_down_rounded, color: Colors.white54),
@@ -656,9 +665,9 @@ class _FormScreenState extends State<FormScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -684,7 +693,7 @@ class _FormScreenState extends State<FormScreen> {
                         ? Border.all(color: Colors.white, width: 3)
                         : Border.all(color: Colors.white10),
                     boxShadow: isSelected
-                        ? [BoxShadow(color: color.withOpacity(0.6), blurRadius: 15, spreadRadius: 5)]
+                        ? [BoxShadow(color: color.withValues(alpha: 0.6), blurRadius: 15, spreadRadius: 5)]
                         : [],
                   ),
                   child: isSelected
@@ -716,12 +725,12 @@ class _FormScreenState extends State<FormScreen> {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: isYes ? Colors.cyanAccent.withOpacity(0.2) : Colors.white.withOpacity(0.05),
+          color: isYes ? Colors.cyanAccent.withValues(alpha: 0.2) : Colors.white.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(30),
           border: Border.all(
-            color: isYes ? Colors.cyanAccent : Colors.white.withOpacity(0.1),
+            color: isYes ? Colors.cyanAccent : Colors.white.withValues(alpha: 0.1),
           ),
-          boxShadow: isYes ? [BoxShadow(color: Colors.cyanAccent.withOpacity(0.1), blurRadius: 8)] : []
+          boxShadow: isYes ? [BoxShadow(color: Colors.cyanAccent.withValues(alpha: 0.1), blurRadius: 8)] : []
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -753,12 +762,12 @@ class _FormScreenState extends State<FormScreen> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.blueAccent.withOpacity(0.1),
-            Colors.cyanAccent.withOpacity(0.1),
+            Colors.blueAccent.withValues(alpha: 0.1),
+            Colors.cyanAccent.withValues(alpha: 0.1),
           ],
         ),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.cyanAccent.withOpacity(0.2)),
+        border: Border.all(color: Colors.cyanAccent.withValues(alpha: 0.2)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

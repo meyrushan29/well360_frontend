@@ -1,8 +1,8 @@
 name: flutter_application_1
-description: "Well360 - AI Health Analyzer application."
+description: "Well360 - Comprehensive Health Monitoring application."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -26,14 +26,26 @@ dependencies:
   flutter_local_notifications: ^20.0.0
   timezone: ^0.10.1
   google_mlkit_face_detection: ^0.13.2
-  google_sign_in: ^6.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.2
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
   assets:
     - assets/icon/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/well360_logo.png"
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/icon/well360_logo.png"
+    background_color: "#ffffff"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/icon/well360_logo.png"

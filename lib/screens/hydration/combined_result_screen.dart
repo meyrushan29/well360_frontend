@@ -172,7 +172,7 @@ class CombinedResultScreen extends StatelessWidget {
                   // Action Button
                   Container(
                     decoration: BoxDecoration(
-                      boxShadow: [BoxShadow(color: Colors.white.withOpacity(0.1), blurRadius: 20, spreadRadius: 0)]
+                      boxShadow: [BoxShadow(color: Colors.white.withValues(alpha: 0.1), blurRadius: 20, spreadRadius: 0)]
                     ),
                     child: ElevatedButton(
                       onPressed: () => Navigator.pop(context),
@@ -210,11 +210,11 @@ class CombinedResultScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(30),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
         boxShadow: [
-          BoxShadow(color: color.withOpacity(0.05), blurRadius: 30, spreadRadius: 5)
+          BoxShadow(color: color.withValues(alpha: 0.05), blurRadius: 30, spreadRadius: 5)
         ]
       ),
       child: Column(
@@ -222,7 +222,7 @@ class CombinedResultScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.2),
+              color: color.withValues(alpha: 0.2),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, color: color, size: 40),
@@ -257,9 +257,9 @@ class CombinedResultScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,9 +308,9 @@ class CombinedResultScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(30),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
       ),
       child: Column(
         children: [
@@ -361,9 +361,9 @@ class CombinedResultScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -410,17 +410,17 @@ class CombinedResultScreen extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            _getCategoryColor(category).withOpacity(0.15),
-            _getCategoryColor(category).withOpacity(0.05),
+            _getCategoryColor(category).withValues(alpha: 0.15),
+            _getCategoryColor(category).withValues(alpha: 0.05),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: _getCategoryColor(category).withOpacity(0.3),
+          color: _getCategoryColor(category).withValues(alpha: 0.3),
         ),
         boxShadow: [
           BoxShadow(
-            color: _getCategoryColor(category).withOpacity(0.1),
+            color: _getCategoryColor(category).withValues(alpha: 0.1),
             blurRadius: 10,
             spreadRadius: 0,
           ),
@@ -448,7 +448,7 @@ class CombinedResultScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: _getCategoryColor(category).withOpacity(0.2),
+                  color: _getCategoryColor(category).withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
@@ -481,13 +481,13 @@ class CombinedResultScreen extends StatelessWidget {
                 Icon(
                   Icons.priority_high,
                   size: 14,
-                  color: Colors.redAccent.withOpacity(0.7),
+                  color: Colors.redAccent.withValues(alpha: 0.7),
                 ),
                 const SizedBox(width: 4),
                 Text(
                   'HIGH PRIORITY',
                   style: GoogleFonts.exo2(
-                    color: Colors.redAccent.withOpacity(0.7),
+                    color: Colors.redAccent.withValues(alpha: 0.7),
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 0.5,

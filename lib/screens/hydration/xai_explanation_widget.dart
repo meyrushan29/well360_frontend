@@ -31,12 +31,12 @@ class _XaiExplanationWidgetState extends State<XaiExplanationWidget> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Colors.deepOrange.withOpacity(0.1),
-            Colors.purple.withOpacity(0.05),
+            Colors.deepOrange.withValues(alpha: 0.1),
+            Colors.purple.withValues(alpha: 0.05),
           ],
         ),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.orangeAccent.withOpacity(0.3)),
+        border: Border.all(color: Colors.orangeAccent.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +47,7 @@ class _XaiExplanationWidgetState extends State<XaiExplanationWidget> {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.orangeAccent.withOpacity(0.2),
+                  color: Colors.orangeAccent.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(Icons.psychology, color: Colors.orangeAccent, size: 20),
@@ -95,9 +95,9 @@ class _XaiExplanationWidgetState extends State<XaiExplanationWidget> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.3),
+                color: Colors.black.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.white.withOpacity(0.1)),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,9 +162,9 @@ class _XaiExplanationWidgetState extends State<XaiExplanationWidget> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.7),
+                      color: Colors.black.withValues(alpha: 0.7),
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.orangeAccent.withOpacity(0.5)),
+                      border: Border.all(color: Colors.orangeAccent.withValues(alpha: 0.5)),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -193,7 +193,7 @@ class _XaiExplanationWidgetState extends State<XaiExplanationWidget> {
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(14),
             ),
             child: Column(
@@ -228,7 +228,7 @@ class _XaiExplanationWidgetState extends State<XaiExplanationWidget> {
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.03),
+              color: Colors.white.withValues(alpha: 0.03),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
@@ -265,9 +265,9 @@ class _XaiExplanationWidgetState extends State<XaiExplanationWidget> {
             width: 24,
             height: 24,
             decoration: BoxDecoration(
-              color: Colors.amber.withOpacity(0.2),
+              color: Colors.amber.withValues(alpha: 0.2),
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.amber.withOpacity(0.5)),
+              border: Border.all(color: Colors.amber.withValues(alpha: 0.5)),
             ),
             child: Center(
               child: Text(
@@ -301,7 +301,7 @@ class _XaiExplanationWidgetState extends State<XaiExplanationWidget> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.03),
+        color: Colors.white.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -311,12 +311,12 @@ class _XaiExplanationWidgetState extends State<XaiExplanationWidget> {
             height: 30,
             decoration: BoxDecoration(
               gradient: RadialGradient(
-                colors: [color, color.withOpacity(0.3)],
+                colors: [color, color.withValues(alpha: 0.3)],
               ),
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: color.withOpacity(0.4),
+                  color: color.withValues(alpha: 0.4),
                   blurRadius: 8,
                   spreadRadius: 1,
                 ),

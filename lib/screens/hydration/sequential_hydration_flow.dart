@@ -402,7 +402,7 @@ class _SequentialHydrationFlowState extends State<SequentialHydrationFlow> {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: isActive ? Colors.cyanAccent : Colors.white10,
-            boxShadow: isActive ? [BoxShadow(color: Colors.cyanAccent.withOpacity(0.5), blurRadius: 10)] : []
+            boxShadow: isActive ? [BoxShadow(color: Colors.cyanAccent.withValues(alpha: 0.5), blurRadius: 10)] : []
           ),
           child: Center(
             child: isActive 
@@ -566,7 +566,7 @@ class _SequentialHydrationFlowState extends State<SequentialHydrationFlow> {
               decoration: BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.cyanAccent.withOpacity(0.3)),
+                border: Border.all(color: Colors.cyanAccent.withValues(alpha: 0.3)),
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
@@ -622,7 +622,7 @@ class _SequentialHydrationFlowState extends State<SequentialHydrationFlow> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.white10),
       ),
@@ -706,7 +706,7 @@ class _SequentialHydrationFlowState extends State<SequentialHydrationFlow> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
-          color: isYes ? Colors.cyanAccent.withOpacity(0.2) : Colors.white10,
+          color: isYes ? Colors.cyanAccent.withValues(alpha: 0.2) : Colors.white10,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: isYes ? Colors.cyanAccent : Colors.transparent),
         ),
@@ -719,9 +719,9 @@ class _SequentialHydrationFlowState extends State<SequentialHydrationFlow> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.cyanAccent.withOpacity(0.2)),
+        border: Border.all(color: Colors.cyanAccent.withValues(alpha: 0.2)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

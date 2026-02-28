@@ -223,8 +223,8 @@ class _LipTrendsScreenState extends State<LipTrendsScreen> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.white.withOpacity(0.05),
-        border: Border.all(color: color.withOpacity(0.3)),
+        color: Colors.white.withValues(alpha: 0.05),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Column(
         children: [
@@ -262,13 +262,13 @@ class _LipTrendsScreenState extends State<LipTrendsScreen> {
         borderRadius: BorderRadius.circular(24),
         gradient: LinearGradient(
           colors: [
-            Colors.cyanAccent.withOpacity(0.1),
-            Colors.blueAccent.withOpacity(0.05),
+            Colors.cyanAccent.withValues(alpha: 0.1),
+            Colors.blueAccent.withValues(alpha: 0.05),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        border: Border.all(color: Colors.cyanAccent.withOpacity(0.3)),
+        border: Border.all(color: Colors.cyanAccent.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -293,7 +293,7 @@ class _LipTrendsScreenState extends State<LipTrendsScreen> {
                   horizontalInterval: 20,
                   getDrawingHorizontalLine: (value) {
                     return FlLine(
-                      color: Colors.white.withOpacity(0.1),
+                      color: Colors.white.withValues(alpha: 0.1),
                       strokeWidth: 1,
                     );
                   },
@@ -362,8 +362,8 @@ class _LipTrendsScreenState extends State<LipTrendsScreen> {
                       show: true,
                       gradient: LinearGradient(
                         colors: [
-                          Colors.cyanAccent.withOpacity(0.3),
-                          Colors.cyanAccent.withOpacity(0.0),
+                          Colors.cyanAccent.withValues(alpha: 0.3),
+                          Colors.cyanAccent.withValues(alpha: 0.0),
                         ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -390,8 +390,8 @@ class _LipTrendsScreenState extends State<LipTrendsScreen> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.white.withOpacity(0.05),
-        border: Border.all(color: Colors.greenAccent.withOpacity(0.3)),
+        color: Colors.white.withValues(alpha: 0.05),
+        border: Border.all(color: Colors.greenAccent.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

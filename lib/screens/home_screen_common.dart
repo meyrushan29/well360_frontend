@@ -143,7 +143,7 @@ class HomeScreenCommon extends StatelessWidget {
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          "NEXT-GEN HEALTH ANALYZER",
+                          "NEXT-GEN HEALTH MONITOR",
                           style: GoogleFonts.exo2(
                             fontSize: 14,
                             letterSpacing: 3,

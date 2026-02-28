@@ -101,7 +101,7 @@ class _CameraScreenState extends State<CameraScreen> with SingleTickerProviderSt
       
       if (mounted) setState(() {});
     } catch (e) {
-      print("Camera Start Error: $e");
+      debugPrint("Camera Start Error: $e");
     }
   }
 
@@ -175,8 +175,8 @@ class _CameraScreenState extends State<CameraScreen> with SingleTickerProviderSt
       // QUALITY ENHANCEMENT: Improve brightness and contrast for low-light images
       cropped = _enhanceImageQuality(cropped);
       
-      // Encode with high quality (100 = maximum quality)
-      final jpg = img.encodeJpg(cropped, quality: 95);
+      // Moderate quality for faster upload (85 is still very clear)
+      final jpg = img.encodeJpg(cropped, quality: 85);
       
       final String newPath = '${rawFile.path}_processed.jpg';
       await File(newPath).writeAsBytes(jpg);
@@ -261,7 +261,7 @@ class _CameraScreenState extends State<CameraScreen> with SingleTickerProviderSt
           style: GoogleFonts.exo2(),
         ),
         duration: const Duration(seconds: 1),
-        backgroundColor: _isFlashOn ? Colors.amber.withOpacity(0.8) : Colors.grey.withOpacity(0.8),
+        backgroundColor: _isFlashOn ? Colors.amber.withValues(alpha: 0.8) : Colors.grey.withValues(alpha: 0.8),
       ),
     );
   }
@@ -330,7 +330,7 @@ class _CameraScreenState extends State<CameraScreen> with SingleTickerProviderSt
                  children: [
                    // Dark Mask
                    ColorFiltered(
-                     colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.7), BlendMode.srcOut),
+                     colorFilter: ColorFilter.mode(Colors.black.withValues(alpha: 0.7), BlendMode.srcOut),
                      child: Stack(
                        children: [
                          Container(
@@ -363,12 +363,12 @@ class _CameraScreenState extends State<CameraScreen> with SingleTickerProviderSt
                          decoration: BoxDecoration(
                            borderRadius: BorderRadius.circular(overlayHeight),
                            border: Border.all(
-                             color: Colors.cyanAccent.withOpacity(0.8), 
+                             color: Colors.cyanAccent.withValues(alpha: 0.8), 
                              width: 3,
                            ),
                            boxShadow: [
                              BoxShadow(
-                               color: Colors.cyanAccent.withOpacity(0.3),
+                               color: Colors.cyanAccent.withValues(alpha: 0.3),
                                blurRadius: 20,
                                spreadRadius: 2,
                              )
@@ -399,7 +399,7 @@ class _CameraScreenState extends State<CameraScreen> with SingleTickerProviderSt
                 // Flash Toggle
                 FloatingActionButton(
                   heroTag: "flash",
-                  backgroundColor: _isFlashOn ? Colors.amber.withOpacity(0.3) : Colors.white10,
+                  backgroundColor: _isFlashOn ? Colors.amber.withValues(alpha: 0.3) : Colors.white10,
                   onPressed: _toggleFlash,
                   child: Icon(
                     _isFlashOn ? Icons.flash_on : Icons.flash_off,
@@ -441,9 +441,9 @@ class _CameraScreenState extends State<CameraScreen> with SingleTickerProviderSt
                 height: 200,
                 padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(30),
-                  border: Border.all(color: Colors.white.withOpacity(0.2)),
+                  border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
                 ),
                 child: Column(
                   children: [
@@ -503,9 +503,9 @@ class _CameraScreenState extends State<CameraScreen> with SingleTickerProviderSt
               width: screenWidth * 0.85,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
+                color: Colors.black.withValues(alpha: 0.6),
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.cyanAccent.withOpacity(0.3)),
+                border: Border.all(color: Colors.cyanAccent.withValues(alpha: 0.3)),
               ),
               child: Column(
                 children: [

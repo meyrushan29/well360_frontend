@@ -17,6 +17,7 @@ class AuthService {
     final prefs = await SharedPreferences.getInstance();
     String? url = prefs.getString(_baseUrlKey);
     _customBaseUrl = url;
+    debugPrint("AuthService: Loaded Base URL: $baseUrl");
   }
 
   // Set and persist new URL
@@ -33,11 +34,26 @@ class AuthService {
 
   // Unified Deployment URL (platform-aware defaults)
   static String get baseUrl {
-    if (_customBaseUrl != null && _customBaseUrl!.isNotEmpty) {
-      return _customBaseUrl!.trim();
+    // FORCE Production URL in Release Mode (App Store / APK)
+    if (kReleaseMode) {
+      return _productionUrl;
     }
-    // Default to Production Render URL for "Fix and Connect" request
-    return _productionUrl;
+
+    String url = (_customBaseUrl != null && _customBaseUrl!.isNotEmpty) 
+        ? _customBaseUrl!.trim() 
+        : _productionUrl;
+
+    // 1. Remove trailing slashes (to avoid double slashes like //predict)
+    while (url.endsWith("/")) {
+      url = url.substring(0, url.length - 1);
+    }
+
+    // 2. Auto-upgrade Render URLs to HTTPS (Redirects can break POST requests)
+    if (url.contains("onrender.com") && url.startsWith("http://")) {
+       url = url.replaceFirst("http://", "https://");
+    }
+    
+    return url;
   }
 
   /// Hint for connection errors: which URL to use for current platform
@@ -128,40 +144,6 @@ class AuthService {
     return prefs.getString('user_email');
   }
 
-  // Google Login (Backend Verify)
-  static Future<String?> googleLoginBackend(String idToken) async {
-    try {
-      final response = await http.post(
-        Uri.parse("$baseUrl/auth/google"),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode({
-          "id_token": idToken,
-        }),
-      ).timeout(const Duration(seconds: 60)); // Increased for Cold Start
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        String token = data["access_token"];
-        String email = data["email"];
-        
-        // Save Token
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setString('auth_token', token);
-        await prefs.setString('user_email', email);
-        
-        return null; // Success
-      } else {
-         try {
-          final body = jsonDecode(response.body);
-          return body["detail"] ?? "Google Login Failed: ${response.statusCode}";
-        } catch (_) {
-          return "Google Login Failed: ${response.statusCode}";
-        }
-      }
-    } catch (e) {
-      return "Error: $e";
-    }
-  }
 
   // Diagnostic: Test Connection
   static Future<String> testConnection() async {
